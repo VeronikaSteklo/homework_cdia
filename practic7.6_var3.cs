@@ -18,19 +18,21 @@ namespace pr763
                     matrix[i, j] = int.Parse(Console.ReadLine());
                 }
             }
+            PrintMatrix(matrix);
 
-            List<int[]> resultMatrix = new List<int[]>();
+            matrix = NoEvenRows(matrix, n);
+
+            Console.WriteLine("\nМатрица после вставки строк:");
+            PrintMatrix(matrix);
+        }
+
+        static int[,] NoEvenRows(int[,] matrix, int n)
+        {
+            int no_even = 0;
+            List<int> no_even_list = new List<int>();
 
             for (int i = 0; i < n; i++)
             {
-                int[] row = new int[n];
-                for (int j = 0; j < n; j++)
-                {
-                    row[j] = matrix[i, j];
-                }
-
-                resultMatrix.Add(row);
-
                 bool hasEven = false;
                 for (int j = 0; j < n; j++)
                 {
@@ -43,21 +45,41 @@ namespace pr763
 
                 if (!hasEven)
                 {
-                    resultMatrix.Add(new int[n]);
+                    no_even++;
+                    no_even_list.Add(i);
                 }
             }
 
-            Console.WriteLine("Измененный массив:");
-            PrintMatrix(resultMatrix);
+            int[,] resultMatrix = new int[n + no_even, n];
+
+            int plus = 0; 
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    resultMatrix[i + plus, j] = matrix[i, j];
+                }
+
+                if (no_even_list.Contains(i))
+                {
+                    plus++;
+                    for (int j = 0; j < n; j++)
+                    {
+                        resultMatrix[i + plus, j] = 0;
+                    }
+                }
+            }
+
+            return resultMatrix;
         }
 
-        static void PrintMatrix(List<int[]> matrix)
+        static void PrintMatrix(int[,] matrix)
         {
-            foreach (var row in matrix)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                foreach (var element in row)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write(element + " ");
+                    Console.Write(matrix[i, j] + " ");
                 }
                 Console.WriteLine();
             }

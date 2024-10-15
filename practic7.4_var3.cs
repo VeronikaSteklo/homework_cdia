@@ -29,7 +29,7 @@ namespace pr743
             }
 
             Console.WriteLine("Исходный массив:");
-            PrintMatrix(matrix);
+            PrintMatrix(matrix, n);
 
             for (int j = 0; j < n; j++)
             {
@@ -43,17 +43,14 @@ namespace pr743
             }
 
             Console.WriteLine("Измененный массив:");
-            PrintMatrix(matrix);
+            PrintMatrix(matrix, n);
         }
 
-        static void PrintMatrix(int[,] matrix)
+        static void PrintMatrix(int[,] matrix, int n)
         {
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < cols; j++)
+                for (int j = 0; j < n; j++)
                 {
                     Console.Write(matrix[i, j] + " ");
                 }

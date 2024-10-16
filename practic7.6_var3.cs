@@ -2,41 +2,59 @@ namespace pr763
 {
     class Program
     {
-        static void Main()
+        static int[][] Input(out int n, out int m)
         {
-            Console.Write("Введите размер массива n: ");
-            int n = int.Parse(Console.ReadLine());
-
-            int[,] matrix = new int[n, n];
-
-            Console.WriteLine("Введите элементы массива:");
+            Console.WriteLine("Введите количество строк:");
+            Console.Write("n = ");
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите количество столбцов:");
+            Console.Write("m = ");
+            m = int.Parse(Console.ReadLine());
+            int[][] a = new int[n * 2][];
             for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < n; j++)
+                a[i] = new int[m];
+                for (int j = 0; j < m; j++)
                 {
-                    Console.Write($"Элемент [{i},{j}]: ");
-                    matrix[i, j] = int.Parse(Console.ReadLine());
+                    Console.Write("a[{0}][{1}]= ", i, j);
+                    a[i][j] = int.Parse(Console.ReadLine());
                 }
             }
-            PrintMatrix(matrix);
-
-            matrix = NoEvenRows(matrix, n);
-
-            Console.WriteLine("\nМатрица после вставки строк:");
-            PrintMatrix(matrix);
+            return a;
         }
-
-        static int[,] NoEvenRows(int[,] matrix, int n)
+        static void Print(int[][] a)
         {
-            int no_even = 0;
-            List<int> no_even_list = new List<int>();
-
+            {
+                foreach (var row in a)
+                {
+                    if (row != null)
+                    {
+                        Console.WriteLine(string.Join(" ", row));
+                    }
+                }
+            }
+        }
+        static void Add(int[][] a, ref int n, int m, int k)
+        {
+            for (int i = n; i > k; i--)
+            {
+                a[i] = a[i - 1];
+            }
+            ++n;
+            a[k] = new int[m];
+            for (int j = 0; j < m; j++)
+            {
+                a[k][j] = 0;
+            }
+        }
+        static void noEven(int[][] a, ref int n, int m)
+        {
             for (int i = 0; i < n; i++)
             {
                 bool hasEven = false;
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < m; j++)
                 {
-                    if (matrix[i, j] % 2 == 0)
+                    if (a[i][j] % 2 == 0)
                     {
                         hasEven = true;
                         break;
@@ -45,44 +63,23 @@ namespace pr763
 
                 if (!hasEven)
                 {
-                    no_even++;
-                    no_even_list.Add(i);
+                    Add(a, ref n, m, i + 1);
+                    i++;
                 }
             }
-
-            int[,] resultMatrix = new int[n + no_even, n];
-
-            int plus = 0; 
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    resultMatrix[i + plus, j] = matrix[i, j];
-                }
-
-                if (no_even_list.Contains(i))
-                {
-                    plus++;
-                    for (int j = 0; j < n; j++)
-                    {
-                        resultMatrix[i + plus, j] = 0;
-                    }
-                }
-            }
-
-            return resultMatrix;
         }
-
-        static void PrintMatrix(int[,] matrix)
+        static void Main()
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    Console.Write(matrix[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            int n, m;
+            int[][] a = Input(out n, out m);
+            Console.WriteLine("Исходный массив:");
+            Print(a);
+           
+            noEven(a, ref n, m);
+
+            Console.WriteLine("Измененный массив:");
+            Print(a);
         }
     }
+
 }

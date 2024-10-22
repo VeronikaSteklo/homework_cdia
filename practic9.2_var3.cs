@@ -1,42 +1,56 @@
 using System;
 using System.IO;
+using static System.Net.WebRequestMethods;
+using System;
+using System.Text;
+using System.IO;
 
 class Program
 {
     static void Main()
     {
-        string file1Contents;
-        using (var reader1 = new StreamReader("C:\\Users\\veron\\source\\repos\\task9\\input_1.txt"))
-        {
-            file1Contents = reader1.ReadToEnd();
-        }
+        string file1 = "C:\\Users\\veron\\source\\repos\\task9\\input_1.txt";
+        string file2 = "C:\\Users\\veron\\source\\repos\\task9\\input.txt";
+        string fileTemp = "C:\\Users\\veron\\source\\repos\\task9\\temp.txt";
 
-        string file2Contents;
-        using (var reader2 = new StreamReader("C:\\Users\\veron\\source\\repos\\task9\\input.txt"))
+        using (var reader1 = new StreamReader(file1))
         {
-            file2Contents = reader2.ReadToEnd();
-        }
-
-        using (var writerTemp = new StreamWriter("C:\\Users\\veron\\source\\repos\\task9\\temp.txt"))
-        {
-            writerTemp.Write(file2Contents);
-        }
-
-        using (var writer2 = new StreamWriter("C:\\Users\\veron\\source\\repos\\task9\\input.txt"))
-        {
-            writer2.Write(file1Contents);
-        }
-
-        using (var writer1 = new StreamWriter("C:\\Users\\veron\\source\\repos\\task9\\input_1.txt"))
-        {
-            using (var readerTemp = new StreamReader("C:\\Users\\veron\\source\\repos\\task9\\temp.txt"))
+            using (StreamWriter temp = new StreamWriter(fileTemp))
             {
-                string tempContents = readerTemp.ReadToEnd();
-                writer1.Write(tempContents);
+                string line;
+                while ((line = reader1.ReadLine()) != null)
+                {
+                    temp.WriteLine(line);
+                }
             }
         }
 
-        File.Delete("C:\\Users\\veron\\source\\repos\\task9\\temp.txt");
+        using (var reader2 = new StreamReader(file2))
+        {
+            using (StreamWriter writer1 = new StreamWriter(file1))
+            {
+                string line;
+                while ((line = reader2.ReadLine()) != null)
+                {
+                    writer1.WriteLine(line);
+                }
+            }
+
+        }
+
+        using (var reader2 = new StreamReader(fileTemp))
+        {
+            using (StreamWriter writer1 = new StreamWriter(file2))
+            {
+                string line;
+                while ((line = reader2.ReadLine()) != null)
+                {
+                    writer1.WriteLine(line);
+                }
+            }
+
+        }
+
 
         Console.WriteLine("Содержимое файлов успешно поменяно местами.");
     }

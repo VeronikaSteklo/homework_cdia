@@ -7,25 +7,30 @@ namespace pr743
             Console.Write("Введите размер массива n: ");
             int n = int.Parse(Console.ReadLine());
 
-            int[,] matrix = new int[n, n];
+            int[][] matrix = new int[n][];
 
-            Console.WriteLine("Введите элементы массива:");
+            for (int i = 0; i < n; i++)
+            {
+                matrix[i] = new int[n];
+            }
+
+                Console.WriteLine("Введите элементы массива:");
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     Console.Write($"Элемент [{i},{j}]: ");
-                    matrix[i, j] = int.Parse(Console.ReadLine());
+                    matrix[j][i] = int.Parse(Console.ReadLine());
                 }
             }
 
-            int[] X = new int[n];
+            int[,] X = new int[1, n];
 
             Console.WriteLine("Введите элементы вектора X:");
             for (int i = 0; i < n; i++)
             {
                 Console.Write($"Элемент X[{i}]: ");
-                X[i] = int.Parse(Console.ReadLine());
+                X[0, i] = int.Parse(Console.ReadLine());
             }
 
             Console.WriteLine("Исходный массив:");
@@ -33,11 +38,11 @@ namespace pr743
 
             for (int j = 0; j < n; j++)
             {
-                if (j % 2 == 0)
+                if (j % 2 != 0)
                 {
                     for (int i = 0; i < n; i++)
                     {
-                        matrix[i, j] = X[i];
+                        matrix[j][i] = X[0, i];
                     }
                 }
             }
@@ -46,13 +51,13 @@ namespace pr743
             PrintMatrix(matrix, n);
         }
 
-        static void PrintMatrix(int[,] matrix, int n)
+        static void PrintMatrix(int[][] matrix, int n)
         {
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Console.Write(matrix[i, j] + " ");
+                    Console.Write(matrix[j][i] + " ");
                 }
                 Console.WriteLine();
             }

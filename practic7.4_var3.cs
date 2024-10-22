@@ -14,7 +14,7 @@ namespace pr743
                 matrix[i] = new int[n];
             }
 
-                Console.WriteLine("Введите элементы массива:");
+            Console.WriteLine("Введите элементы массива:");
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
@@ -24,13 +24,13 @@ namespace pr743
                 }
             }
 
-            int[,] X = new int[1, n];
+            int[] X = new int[n];
 
             Console.WriteLine("Введите элементы вектора X:");
             for (int i = 0; i < n; i++)
             {
                 Console.Write($"Элемент X[{i}]: ");
-                X[0, i] = int.Parse(Console.ReadLine());
+                X[i] = int.Parse(Console.ReadLine());
             }
 
             Console.WriteLine("Исходный массив:");
@@ -40,13 +40,9 @@ namespace pr743
             {
                 if (j % 2 != 0)
                 {
-                    for (int i = 0; i < n; i++)
-                    {
-                        matrix[j][i] = X[0, i];
-                    }
+                    X.CopyTo(matrix[j], 0);
                 }
             }
-
             Console.WriteLine("Измененный массив:");
             PrintMatrix(matrix, n);
         }

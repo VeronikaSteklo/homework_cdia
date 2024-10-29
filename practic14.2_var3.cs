@@ -8,10 +8,11 @@ namespace BaggageClaim
 {
     public struct Passenger : IComparable<Passenger>
     {
-        public String Name;
+        public string Name;
         public int ItemCount;
         public double TotalWeight;
         public double AverageWeight;
+        
         public Passenger(string name, int itemCount, double totalWeight, double averageWeight)
         {
             this.Name = name;
@@ -54,15 +55,15 @@ namespace BaggageClaim
                 }
             }
 
-            var filteredPassengers = passengers.OrderBy(passenger => passenger.ItemCount).ToList();
+            passengers.Sort();
 
             using (var writer = new StreamWriter(outputFilePath, false, Encoding.UTF8))
             {
-                if (filteredPassengers.Count == 0)
+                if (passengers.Count == 0)
                 {
-                    writer.WriteLine("Пассажирова нет");
+                    writer.WriteLine("Пассажиров нет");
                 }
-                foreach (var passenger in filteredPassengers)
+                foreach (var passenger in passengers)
                 {
                     writer.WriteLine($"{passenger.Name}; {passenger.ItemCount}; {passenger.TotalWeight}; Средний вес: {passenger.AverageWeight:F2}");
                 }

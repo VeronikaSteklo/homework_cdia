@@ -1,30 +1,30 @@
 using System;
 using System.Diagnostics;
 
-class Program
+public class GCDTest
 {
-    static void Main()
+    public static void Main()
     {
-        int[] aValues = { 3, 11, 3517, 4, 105, 12012, 9979200 };
-        int[] bValues = { 4, 3571, 3461, 12, 30, 27720, 1048950 };
-
-        for (int i = 0; i < aValues.Length; i++)
+        var testCases = new (int, int)[] 
         {
-            int a = aValues[i];
-            int b = bValues[i];
+            (3, 4), (11, 3571), (3517, 3461), (4, 12),
+            (105, 30), (12012, 27720), (9979200, 1048950)
+        };
 
-            Stopwatch sw1 = Stopwatch.StartNew();
-            int gcdSub = GCDSubtraction(a, b);
-            sw1.Stop();
 
-            Stopwatch sw2 = Stopwatch.StartNew();
-            int gcdDiv = GCDDivision(a, b);
-            sw2.Stop();
+        foreach (var (a, b) in testCases)
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            GCDSubtraction(a, b);
+            stopwatch.Stop();
+            long subtractionTime = stopwatch.ElapsedTicks;
 
-            Console.WriteLine($"a = {a}, b = {b}");
-            Console.WriteLine($"GCD ( сложение ): {gcdSub}, Время: {sw1.ElapsedTicks} тиков");
-            Console.WriteLine($"GCD ( деление ): {gcdDiv}, Время: {sw2.ElapsedTicks} тиков");
-            Console.WriteLine();
+            stopwatch.Restart();
+            GCDDivision(a, b);
+            stopwatch.Stop();
+            long divisionTime = stopwatch.ElapsedTicks;
+
+            Console.WriteLine($"Значения a и b: {a} и {b} \nВремя вычитания: {subtractionTime} \nВремя деления: {divisionTime}\n");
         }
     }
 
@@ -33,13 +33,9 @@ class Program
         while (a != b)
         {
             if (a > b)
-            {
                 a -= b;
-            }
             else
-            {
                 b -= a;
-            }
         }
         return a;
     }
@@ -48,9 +44,9 @@ class Program
     {
         while (b != 0)
         {
-            int temp = b;
-            b = a % b;
-            a = temp;
+            int remainder = a % b;
+            a = b;
+            b = remainder;
         }
         return a;
     }

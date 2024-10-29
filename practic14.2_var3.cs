@@ -8,18 +8,17 @@ namespace BaggageClaim
 {
     public struct Passenger : IComparable<Passenger>
     {
-        public string Name { get; set; }
-        public int ItemCount { get; set; }
-        public double TotalWeight { get; set; }
-
-        public Passenger(string name, int itemCount, double totalWeight)
+        public String Name;
+        public int ItemCount;
+        public double TotalWeight;
+        public double AverageWeight;
+        public Passenger(string name, int itemCount, double totalWeight, double averageWeight)
         {
-            Name = name;
-            ItemCount = itemCount;
-            TotalWeight = totalWeight;
+            this.Name = name;
+            this.ItemCount = itemCount;
+            this.TotalWeight = totalWeight;
+            this.AverageWeight = averageWeight;
         }
-
-        public double AverageWeight => TotalWeight / ItemCount;
 
         public int CompareTo(Passenger other)
         {
@@ -33,7 +32,7 @@ namespace BaggageClaim
         {
             string inputFilePath = "C:\\Users\\veron\\source\\repos\\task9\\pass_input1.txt";
             string outputFilePath = "C:\\Users\\veron\\source\\repos\\task9\\output_pass.txt";
-            double weightThreshold = 2.0; 
+            double weightThreshold = 5.0;
 
             List<Passenger> passengers = new List<Passenger>();
 
@@ -46,15 +45,16 @@ namespace BaggageClaim
                     string name = data[0].Trim();
                     int itemCount = int.Parse(data[1].Trim());
                     double totalWeight = double.Parse(data[2].Trim());
+                    double averageWeight = totalWeight / itemCount;
 
-                    passengers.Add(new Passenger(name, itemCount, totalWeight));
+                    if (averageWeight > weightThreshold)
+                    {
+                        passengers.Add(new Passenger(name, itemCount, totalWeight, averageWeight));
+                    }
                 }
             }
 
-            var filteredPassengers = passengers
-                .Where(p => p.AverageWeight > weightThreshold)
-                .OrderBy(p => p.ItemCount)
-                .ToList();
+            var filteredPassengers = passengers.OrderBy(passenger => passenger.ItemCount).ToList();
 
             using (var writer = new StreamWriter(outputFilePath, false, Encoding.UTF8))
             {

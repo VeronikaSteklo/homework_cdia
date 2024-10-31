@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text;
+using System.IO;
 
 namespace BaggageClaim
 {
@@ -12,7 +14,7 @@ namespace BaggageClaim
         public int ItemCount;
         public double TotalWeight;
         public double AverageWeight;
-        
+
         public Passenger(string name, int itemCount, double totalWeight, double averageWeight)
         {
             this.Name = name;
@@ -31,18 +33,28 @@ namespace BaggageClaim
     {
         static void Main(string[] args)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             string inputFilePath = "C:\\Users\\veron\\source\\repos\\task9\\pass_input1.txt";
             string outputFilePath = "C:\\Users\\veron\\source\\repos\\task9\\output_pass.txt";
             double weightThreshold = 5.0;
 
             List<Passenger> passengers = new List<Passenger>();
 
-            using (var reader = new StreamReader(inputFilePath, Encoding.UTF8))
+            using (StreamReader reader = new StreamReader(inputFilePath, Encoding.GetEncoding(1251)))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
+                    Console.WriteLine(line);
                     var data = line.Split(';');
+
+                    if (data.Length < 3)
+                    {
+                        Console.WriteLine("Ошибка формата строки: " + line);
+                        continue;
+                    }
+
                     string name = data[0].Trim();
                     int itemCount = int.Parse(data[1].Trim());
                     double totalWeight = double.Parse(data[2].Trim());
@@ -50,6 +62,7 @@ namespace BaggageClaim
 
                     if (averageWeight > weightThreshold)
                     {
+                        Console.WriteLine(name);
                         passengers.Add(new Passenger(name, itemCount, totalWeight, averageWeight));
                     }
                 }
@@ -57,7 +70,7 @@ namespace BaggageClaim
 
             passengers.Sort();
 
-            using (var writer = new StreamWriter(outputFilePath, false, Encoding.UTF8))
+            using (var writer = new StreamWriter(outputFilePath, false, Encoding.Default))
             {
                 if (passengers.Count == 0)
                 {
@@ -65,7 +78,8 @@ namespace BaggageClaim
                 }
                 foreach (var passenger in passengers)
                 {
-                    writer.WriteLine($"{passenger.Name}; {passenger.ItemCount}; {passenger.TotalWeight}; Средний вес: {passenger.AverageWeight:F2}");
+                    string name = passenger.Name;
+                    writer.WriteLine($"{name}; {passenger.ItemCount}; {passenger.TotalWeight}; Средний вес: {passenger.AverageWeight:F2}");
                 }
             }
 

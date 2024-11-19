@@ -31,11 +31,14 @@ class Program
             }
 
 
-            var filteredNumbers = numbers.Where(num => num >= a && num <= b)
-                                         .OrderBy(num => num)
-                                         .ToList();
+            var filteredNumbers = 
+                from num in numbers
+                where num >= a && num <= b
+                orderby num
+                select num;
 
-            Console.WriteLine("Числа из отрезка [{0}, {1}], отсортированные по возрастанию:", a, b);
+
+                Console.WriteLine("Числа из отрезка [{0}, {1}], отсортированные по возрастанию:", a, b);
             Console.WriteLine(string.Join(" ", filteredNumbers));
 
             using (StreamWriter writer = new StreamWriter(outputFilePath))
@@ -54,3 +57,6 @@ class Program
         }
     }
 }
+
+
+           

@@ -56,13 +56,16 @@ class Program
                 }
             }
 
-            var passedStudents = students.Where(s => s.HasPassed())
-                                         .OrderBy(s => s.GroupNumber)
-                                         .ToList();
+            var sortedStudents =
+                from s in students
+                where s.HasPassed()
+                orderby s.GroupNumber
+                select s;
+
 
             using (StreamWriter writer = new StreamWriter(outputFilePath, false, Encoding.Default))
             {
-                foreach (var student in passedStudents)
+                foreach (var student in sortedStudents)
                 {
                     writer.WriteLine(student.ToString());
                 }

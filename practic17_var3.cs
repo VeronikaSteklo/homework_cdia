@@ -52,7 +52,10 @@ namespace Program
 
         public int A
         {
-            get => a;
+            get
+            {
+                return a;
+            }
             set
             {
                 if (value <= 0)
@@ -65,7 +68,10 @@ namespace Program
 
         public int B
         {
-            get => b;
+            get 
+            {
+                return b;
+            }
             set
             {
                 if (value <= 0)
@@ -121,15 +127,15 @@ namespace Program
 
         public static Rectangle operator ++(Rectangle rect)
         {
-            rect.a++;
-            rect.b++;
+            ++rect.a;
+            ++rect.b;
             return rect;
         }
 
         public static Rectangle operator --(Rectangle rect)
         {
-            rect.a--;
-            rect.b--;
+            --rect.a;
+            --rect.b;
             return rect;
         }
 
@@ -213,8 +219,23 @@ namespace Program
                             writer.WriteLine($"{i}. {rectangle}" );
                             rectangle.Scale(i);
                             writer.WriteLine($"После умножения на скаляр: {rectangle}");
+                            writer.WriteLine("\nПерегрузки методов предков:");
+                            writer.WriteLine($"ToString: {rectangle.ToString()}");
                             writer.WriteLine($"HashCode: {rectangle.GetHashCode()}");
                             writer.WriteLine($"Равность предыдущему: {rectangle.Equals(prev)}");
+                            rectangle[0] = i;
+                            rectangle[1] = i * 2;
+                            writer.WriteLine($"\nИндексатор: {rectangle}");
+                            Rectangle temp = new Rectangle(rectangle);
+                            writer.WriteLine($"\n{temp}\nПерегрузки:");
+                            --temp;
+                            writer.WriteLine($"--: {temp}");
+                            ++temp;
+                            writer.WriteLine($"++: {temp}");
+                            temp *= 2;
+                            writer.WriteLine($"*=: {temp}");
+                            writer.WriteLine($"Копирование, а не присваивание одной ссылки: \n{rectangle}");
+                            writer.WriteLine($"\n\n");
                             prev = rectangles[i - 1];
                             i++;
                         }

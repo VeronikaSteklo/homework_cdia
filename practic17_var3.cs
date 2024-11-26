@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Program
+namespace Task17
 {
     class Rectangle
     {
@@ -136,7 +136,14 @@ namespace Program
         {
             --rect.a;
             --rect.b;
-            return rect;
+            if (rect.a <= 0 || rect.b <= 0)
+            {
+                throw new ArgumentException("Стороны должны быть положительными.");
+            }
+            else
+            {
+                return rect;
+            }
         }
 
         public static Rectangle operator *(Rectangle rect, int scalar)
@@ -223,8 +230,8 @@ namespace Program
                             writer.WriteLine($"ToString: {rectangle.ToString()}");
                             writer.WriteLine($"HashCode: {rectangle.GetHashCode()}");
                             writer.WriteLine($"Равность предыдущему: {rectangle.Equals(prev)}");
-                            rectangle[0] = i;
-                            rectangle[1] = i * 2;
+                            rectangle[0] = i * 2;
+                            rectangle[1] = i * 3;
                             writer.WriteLine($"\nИндексатор: {rectangle}");
                             Rectangle temp = new Rectangle(rectangle);
                             writer.WriteLine($"\n{temp}\nПерегрузки:");

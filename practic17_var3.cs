@@ -127,30 +127,40 @@ namespace Task17
 
         public static Rectangle operator ++(Rectangle rect)
         {
-            ++rect.a;
-            ++rect.b;
-            return rect;
+            Rectangle rectangle = new Rectangle(rect);
+            rectangle.a++;
+            rectangle.b++;
+            return rectangle;
         }
 
         public static Rectangle operator --(Rectangle rect)
         {
-            --rect.a;
-            --rect.b;
-            if (rect.a <= 0 || rect.b <= 0)
+            Rectangle rectangle = new Rectangle(rect);
+            --rectangle.a;
+            --rectangle.b;
+            if (rectangle.a <= 0 || rectangle.b <= 0)
             {
                 throw new ArgumentException("Стороны должны быть положительными.");
             }
             else
             {
-                return rect;
+                return rectangle;
             }
         }
 
         public static Rectangle operator *(Rectangle rect, int scalar)
         {
-            rect.a *= scalar;
-            rect.b *= scalar;
-            return rect;
+            Rectangle rectangle = new Rectangle(rect);
+            if (scalar <= 0)
+            {
+                throw new ArgumentException("Скаляр должен быть положительным.");
+            }
+            else
+            {
+                rectangle.a *= scalar;
+                rectangle.b *= scalar;
+                return rectangle;
+            }
         }
         public override int GetHashCode()
         {
@@ -218,21 +228,25 @@ namespace Task17
                 {
                     using (StreamWriter writer = new StreamWriter(filePath))
                     {
-                        int i = 1; 
-                        Rectangle prev = rectangles[0];
+                        Rectangle prev = new Rectangle(10, 5);
                         
                         foreach (var rectangle in rectangles)
                         {
+                            int i = rectangles.IndexOf(rectangle) + 1;
                             writer.WriteLine($"{i}. {rectangle}" );
-                            rectangle.Scale(i);
-                            writer.WriteLine($"После умножения на скаляр: {rectangle}");
+
                             writer.WriteLine("\nПерегрузки методов предков:");
                             writer.WriteLine($"ToString: {rectangle.ToString()}");
                             writer.WriteLine($"HashCode: {rectangle.GetHashCode()}");
-                            writer.WriteLine($"Равность предыдущему: {rectangle.Equals(prev)}");
+                            writer.WriteLine($"Равность: {rectangle.Equals(prev)}");
+
+                            rectangle.Scale(i);
+                            writer.WriteLine($"После умножения на скаляр: {rectangle}");
+
                             rectangle[0] = i * 2;
                             rectangle[1] = i * 3;
                             writer.WriteLine($"\nИндексатор: {rectangle}");
+
                             Rectangle temp = new Rectangle(rectangle);
                             writer.WriteLine($"\n{temp}\nПерегрузки:");
                             --temp;
@@ -240,11 +254,10 @@ namespace Task17
                             ++temp;
                             writer.WriteLine($"++: {temp}");
                             temp *= 2;
-                            writer.WriteLine($"*=: {temp}");
+                            writer.WriteLine($"*= 2: {temp}");
                             writer.WriteLine($"Копирование, а не присваивание одной ссылки: \n{rectangle}");
+
                             writer.WriteLine($"\n\n");
-                            prev = rectangles[i - 1];
-                            i++;
                         }
                     }
                     Console.WriteLine("Результат записан в файл.");

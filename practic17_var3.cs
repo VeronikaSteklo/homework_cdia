@@ -125,41 +125,41 @@ namespace Task17
             }
         }
 
-        public static Rectangle operator ++(Rectangle rect)
+        public static Rectangle operator ++(Rectangle rectangle)
         {
-            Rectangle rectangle = new Rectangle(rect);
-            rectangle.a++;
-            rectangle.b++;
-            return rectangle;
+            Rectangle temp = new Rectangle(rectangle);
+            temp.a++;
+            temp.b++;
+            return temp;
         }
 
-        public static Rectangle operator --(Rectangle rect)
+        public static Rectangle operator --(Rectangle rectangle)
         {
-            Rectangle rectangle = new Rectangle(rect);
-            --rectangle.a;
-            --rectangle.b;
-            if (rectangle.a <= 0 || rectangle.b <= 0)
+            Rectangle temp = new Rectangle(rectangle);
+            --temp.a;
+            --temp.b;
+            if (temp.a <= 0 || temp.b <= 0)
             {
                 throw new ArgumentException("Стороны должны быть положительными.");
             }
             else
             {
-                return rectangle;
+                return temp;
             }
         }
 
-        public static Rectangle operator *(Rectangle rect, int scalar)
+        public static Rectangle operator *(Rectangle rectangle, int scalar)
         {
-            Rectangle rectangle = new Rectangle(rect);
+            Rectangle temp = new Rectangle(rectangle);
             if (scalar <= 0)
             {
                 throw new ArgumentException("Скаляр должен быть положительным.");
             }
             else
             {
-                rectangle.a *= scalar;
-                rectangle.b *= scalar;
-                return rectangle;
+                temp.a *= scalar;
+                temp.b *= scalar;
+                return temp;
             }
         }
         public override int GetHashCode()

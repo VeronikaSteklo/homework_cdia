@@ -162,6 +162,11 @@ namespace Task17
                 return temp;
             }
         }
+
+        public static Rectangle operator *(int scalar, Rectangle rectangle)
+        {
+            return rectangle * scalar;
+        }
         public override int GetHashCode()
         {
             return HashCode.Combine(a, b);
@@ -175,11 +180,6 @@ namespace Task17
             }
             return false;
         }
-
-        //public override Type GetType()
-        //{
-        //    return typeof(Rectangle);
-        //}
 
         public override string ToString()
         {
@@ -254,6 +254,7 @@ namespace Task17
                             ++temp;
                             writer.WriteLine($"++: {temp}");
                             temp *= 2;
+                            temp = 2 * temp;
                             writer.WriteLine($"*= 2: {temp}");
                             writer.WriteLine($"Копирование, а не присваивание одной ссылки: \n{rectangle}");
 

@@ -16,6 +16,7 @@ namespace Task18_19
         }
 
         public abstract string ToString();
+        
         public abstract bool IsMatch(string author);
 
         public int CompareTo(Publication other)

@@ -1,0 +1,14 @@
+C:\Users\veron\source\repos\Task21_1\bin\Debug\net8.0\Task21_1.exe
+C:\Users\veron\source\repos\Task21_1\bin\Debug\net8.0\Task21_1.deps.json
+C:\Users\veron\source\repos\Task21_1\bin\Debug\net8.0\Task21_1.runtimeconfig.json
+C:\Users\veron\source\repos\Task21_1\bin\Debug\net8.0\Task21_1.dll
+C:\Users\veron\source\repos\Task21_1\bin\Debug\net8.0\Task21_1.pdb
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.AssemblyInfoInputs.cache
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.AssemblyInfo.cs
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.csproj.CoreCompileInputs.cache
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.dll
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\refint\Task21_1.dll
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.pdb
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\Task21_1.genruntimeconfig.cache
+C:\Users\veron\source\repos\Task21_1\obj\Debug\net8.0\ref\Task21_1.dll

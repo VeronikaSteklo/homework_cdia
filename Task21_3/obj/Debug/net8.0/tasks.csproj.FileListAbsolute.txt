@@ -1,0 +1,14 @@
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.AssemblyInfoInputs.cache
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.AssemblyInfo.cs
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.csproj.CoreCompileInputs.cache
+C:\Users\veron\source\repos\tasks\bin\Debug\net8.0\tasks.exe
+C:\Users\veron\source\repos\tasks\bin\Debug\net8.0\tasks.deps.json
+C:\Users\veron\source\repos\tasks\bin\Debug\net8.0\tasks.runtimeconfig.json
+C:\Users\veron\source\repos\tasks\bin\Debug\net8.0\tasks.dll
+C:\Users\veron\source\repos\tasks\bin\Debug\net8.0\tasks.pdb
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.dll
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\refint\tasks.dll
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.pdb
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\tasks.genruntimeconfig.cache
+C:\Users\veron\source\repos\tasks\obj\Debug\net8.0\ref\tasks.dll

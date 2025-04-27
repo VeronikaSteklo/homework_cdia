@@ -1,0 +1,20 @@
+{
+  "$type": "System.Collections.Generic.List`1[[Task18_19.DataAccessLayer.Entities.Publication, Task18-19]], System.Private.CoreLib",
+  "$values": [
+    {
+      "$type": "Task18_19.DataAccessLayer.Entities.Book, Task18-19",
+      "Year": 2005,
+      "Publisher": "qwerty",
+      "Title": "qwerty",
+      "Author": "qwerty"
+    },
+    {
+      "$type": "Task18_19.DataAccessLayer.Entities.Article, Task18-19",
+      "Journal": "zxcvbn",
+      "Issue": 1,
+      "Year": 1,
+      "Title": "qwerty",
+      "Author": "asdfgh"
+    }
+  ]
+}

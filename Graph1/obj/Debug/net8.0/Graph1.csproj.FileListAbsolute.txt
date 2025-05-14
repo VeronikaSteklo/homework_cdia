@@ -1,0 +1,14 @@
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.AssemblyInfoInputs.cache
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.AssemblyInfo.cs
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.csproj.CoreCompileInputs.cache
+C:\Users\veron\RiderProjects\Graph1\Graph1\bin\Debug\net8.0\Graph1.exe
+C:\Users\veron\RiderProjects\Graph1\Graph1\bin\Debug\net8.0\Graph1.deps.json
+C:\Users\veron\RiderProjects\Graph1\Graph1\bin\Debug\net8.0\Graph1.runtimeconfig.json
+C:\Users\veron\RiderProjects\Graph1\Graph1\bin\Debug\net8.0\Graph1.dll
+C:\Users\veron\RiderProjects\Graph1\Graph1\bin\Debug\net8.0\Graph1.pdb
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.dll
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\refint\Graph1.dll
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.pdb
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\Graph1.genruntimeconfig.cache
+C:\Users\veron\RiderProjects\Graph1\Graph1\obj\Debug\net8.0\ref\Graph1.dll

@@ -1,0 +1,18 @@
+{
+  "runtimeOptions": {
+    "tfm": "net8.0",
+    "framework": {
+      "name": "Microsoft.NETCore.App",
+      "version": "8.0.0"
+    },
+    "additionalProbingPaths": [
+      "C:\\Users\\veron\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\veron\\.nuget\\packages",
+      "D:\\еще_шарпы\\NuGetPackages"
+    ],
+    "configProperties": {
+      "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,
+      "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
+    }
+  }
+}

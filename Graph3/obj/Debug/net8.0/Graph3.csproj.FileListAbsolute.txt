@@ -1,0 +1,14 @@
+C:\Users\veron\RiderProjects\Graph1\Graph3\bin\Debug\net8.0\Graph3.exe
+C:\Users\veron\RiderProjects\Graph1\Graph3\bin\Debug\net8.0\Graph3.deps.json
+C:\Users\veron\RiderProjects\Graph1\Graph3\bin\Debug\net8.0\Graph3.runtimeconfig.json
+C:\Users\veron\RiderProjects\Graph1\Graph3\bin\Debug\net8.0\Graph3.dll
+C:\Users\veron\RiderProjects\Graph1\Graph3\bin\Debug\net8.0\Graph3.pdb
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.AssemblyInfoInputs.cache
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.AssemblyInfo.cs
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.csproj.CoreCompileInputs.cache
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.dll
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\refint\Graph3.dll
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.pdb
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\Graph3.genruntimeconfig.cache
+C:\Users\veron\RiderProjects\Graph1\Graph3\obj\Debug\net8.0\ref\Graph3.dll
